@@ -1,9 +1,9 @@
-
+<!doctype html>
 <html lang="uz">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TB.AI v0.0.5</title>
+<title>TezkorAI v1.0</title>
 <link id="fav" rel="icon" href="data:,">
 <style>
 :root{
@@ -46,7 +46,7 @@ header{
 .seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{padding:5px 9px;font-size:12px;border:0;background:transparent;color:var(--muted);cursor:pointer}
 .seg button.on{background:var(--accent);color:#fff}
-@media (max-width:560px){ .off span{display:none} .wm small{display:none} }
+@media (max-width:560px){ .off,.ver{display:none} .wm small{display:none} .tools #degBtn{display:none} header{padding:8px 10px} }
 main{flex:1;overflow-y:auto;padding:20px 16px 8px}
 .wrap{max-width:720px;margin:0 auto}
 .welcome{text-align:center;padding:8vh 0 20px}
@@ -97,6 +97,47 @@ textarea::placeholder{color:var(--muted)}
 .settings-menu{position:absolute;right:0;top:42px;z-index:20;width:min(270px,80vw);padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 35px #0002}
 .settings-menu button{display:flex;align-items:center;gap:9px;width:100%;padding:11px;border:0;border-radius:9px;background:transparent;color:var(--ink);text-align:left;font:inherit;font-size:14px;cursor:pointer}.settings-menu button:hover{background:var(--soft)}
 .settings-shade{position:fixed;inset:0;z-index:50;background:#0007;display:grid;place-items:center;padding:18px}.settings-dialog{width:min(520px,100%);max-height:82dvh;overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 20px 70px #0004}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.dialog-head h2{font-size:20px}.settings-dialog h3{font-size:16px;margin:12px 0 7px}.settings-dialog p,.settings-dialog li{font-size:14px;color:var(--muted);line-height:1.65}.settings-dialog ul{padding-left:20px}.lang-options{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.lang-options button,.sample-q{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 12px;border-radius:10px;cursor:pointer}.lang-options button.active{background:var(--accent);color:white}.qa-list{display:grid;gap:8px}.qa-row{padding:10px 12px;border:1px solid var(--line);border-radius:12px}.qa-row b{display:block;font-size:14px}.qa-row span{display:block;font-size:14px;color:var(--muted);margin-top:3px}.sample-q{margin:4px 5px 4px 0}
+
+/* TezkorAI premium black + neon theme */
+:root{--bg:#070910;--panel:#0d1220;--ink:#edf7ff;--muted:#8c9aae;--line:#1d2b40;--user:#111d2d;--accent:#40f5d0;--accent-ink:#04110f;--soft:#101b2b}
+body{background:radial-gradient(ellipse at 50% -20%,#142b42 0%,#070910 58%);color:var(--ink)}
+header,footer{background:rgba(7,9,16,.96);backdrop-filter:blur(14px)}
+header{border-bottom-color:#1b3044;box-shadow:0 5px 28px #0003}
+.wm b{background:linear-gradient(90deg,#50f5d4,#78a9ff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.5px}
+.ver{border-color:#254c59;color:#69f8df}
+.btn,.chip{border-color:#20354a;background:#0b1220;color:#dffaff}
+.btn:hover,.chip:hover{border-color:#40f5d0;box-shadow:0 0 18px #40f5d01b}
+.seg button.on,.send{background:linear-gradient(135deg,#40f5d0,#6da8ff);color:#061019}
+.box{background:#0b1220;border-color:#20374c;box-shadow:0 0 0 1px #40f5d00a,0 10px 40px #0005}
+.box:focus-within{border-color:#40f5d0;box-shadow:0 0 0 3px #40f5d018,0 0 24px #40f5d015}
+.bubble{background:#122035;border:1px solid #1e344a}
+.result{background:#0c1d2a;border-color:#27505a}.result small{color:#40f5d0}
+.settings-menu,.settings-dialog{background:#0c1220;border-color:#263b52;color:#edf7ff}
+.settings-menu button:hover{background:#132438}
+.settings-shade{background:#02050bd9;backdrop-filter:blur(8px)}
+#profileBtn{width:36px;height:36px;border-radius:50%;border:1px solid #40f5d0;background:linear-gradient(135deg,#122d3a,#191d3e);color:#8fffea;font-weight:800;cursor:pointer;box-shadow:0 0 16px #40f5d01e}
+#accountMenu{position:absolute;right:12px;top:58px;z-index:60;width:min(270px,85vw);padding:14px;background:#0c1220;border:1px solid #28445a;border-radius:16px;box-shadow:0 20px 50px #0009}
+#accountMenu p{font-size:13px;color:#91a4b9;overflow-wrap:anywhere;margin:4px 0 12px}
+#accountMenu button{width:100%;padding:9px;border:1px solid #294157;background:#111d2d;color:#eafaff;border-radius:10px;margin-top:7px}
+#sidePanel{position:fixed;z-index:35;left:0;top:0;bottom:0;width:min(290px,84vw);background:#080e19;border-right:1px solid #20354a;padding:14px;display:flex;flex-direction:column;gap:12px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px #0007}
+#sidePanel.open{transform:translateX(0)}
+#sidePanel .side-title{font-size:12px;color:#8297ad;text-transform:uppercase;letter-spacing:1.5px;padding:8px 4px}
+#sidePanel button{border:1px solid #20364b;background:#0d1726;color:#e6f8ff;border-radius:11px;padding:10px;text-align:left;cursor:pointer}
+#sidePanel .conv-list{overflow:auto;display:flex;flex-direction:column;gap:6px;min-height:0}
+#sidePanel .conv-item{display:flex;align-items:center;gap:6px;padding:9px;border-color:transparent;background:transparent;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sidePanel .conv-item.active{background:#102537;border-color:#24545b;color:#70f6de}
+#sidePanel .side-bottom{margin-top:auto;font-size:11px;color:#71859a;line-height:1.5}
+#loginScreen{position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 50% 5%,#16354a 0%,#080b13 55%,#04060b 100%);display:grid;place-items:center;padding:22px;overflow:auto}
+.login-card{width:min(410px,100%);border:1px solid #26495a;background:linear-gradient(160deg,#0d1726f5,#080d17f8);border-radius:26px;padding:26px;box-shadow:0 0 55px #40f5d010,0 25px 80px #0008}
+.login-brand{text-align:center;margin-bottom:22px}.login-brand .login-mark{font-size:27px;font-weight:800;letter-spacing:.4px;background:linear-gradient(90deg,#40f5d0,#8ca8ff);color:transparent;background-clip:text}.login-brand p{color:#8da1b5;font-size:13px;margin-top:4px}
+.login-tabs{display:flex;gap:6px;background:#070c15;border:1px solid #1b3044;padding:4px;border-radius:12px;margin-bottom:18px}
+.login-tabs button{flex:1;border:0;border-radius:9px;padding:10px;background:transparent;color:#8ea2b6;cursor:pointer}.login-tabs button.active{background:#163044;color:#7df9e3}
+.login-card label{display:block;font-size:13px;color:#a9bed0;margin:12px 0 6px}.login-card input{width:100%;border:1px solid #263d53;background:#070d17;color:#effaff;border-radius:11px;padding:13px;font-size:15px;outline:none}.login-card input:focus{border-color:#40f5d0;box-shadow:0 0 0 3px #40f5d015}
+#authSubmit{width:100%;border:0;border-radius:12px;padding:13px;margin-top:18px;background:linear-gradient(100deg,#40f5d0,#8aa8ff);color:#041019;font-weight:800;cursor:pointer}
+#authError{color:#ff8c9b;font-size:13px;min-height:18px;margin-top:10px}#authHint{color:#8297ac;font-size:11px;line-height:1.5;margin-top:14px}
+#sideShade{position:fixed;inset:0;background:#0009;z-index:34;display:none}#sideShade.show{display:block}
+@media(min-width:850px){#sidePanel{width:275px}main,footer{transition:margin-left .2s}}
+
 </style>
 </head>
 <body>
@@ -104,12 +145,13 @@ textarea::placeholder{color:var(--muted)}
 <header>
   <div class="brand">
     <span id="hLogo"></span>
-    <div class="wm"><b>TB.AI</b><small id="tag"></small></div>
-    <span class="ver">v0.0.5</span>
+    <div class="wm"><b>TezkorAI</b><small id="tag"></small></div>
+    <span class="ver">v1.0</span>
     <span class="off"><i></i><span>offline</span></span>
+    <button id="profileBtn" title="Akkaunt" aria-label="Akkaunt">?</button>
   </div>
   <div class="tools">
-    <button class="btn" id="degBtn" title="Sin/cos/tan">RAD</button>
+    <button class="btn" id="sideToggle" title="Suhbatlar">☰</button><button class="btn" id="degBtn" title="Sin/cos/tan">RAD</button>
     <button class="btn" id="newBtn"></button>
     <div class="settings-wrap"><button class="btn dots-btn" id="settingsBtn" aria-label="Settings" title="Sozlamalar">⋮</button>
       <div class="settings-menu" id="settingsMenu" hidden>
@@ -119,7 +161,9 @@ textarea::placeholder{color:var(--muted)}
       </div>
     </div>
   </div>
+  <div id="accountMenu" hidden><strong id="accountName">Akkaunt</strong><p id="accountInfo"></p><button id="backToLogin">Login sahifasiga qaytish</button><button id="logoutBtn">Chiqish</button></div>
 </header>
+<div id="sideShade"></div><aside id="sidePanel"><div class="side-title">TezkorAI · Suhbatlar</div><button id="sideNew">＋ Yangi suhbat</button><div class="conv-list" id="conversationList"></div><div class="side-bottom">Suhbatlar ushbu qurilmada saqlanadi.<br>150 tagacha suhbat tarixi.</div></aside>
 
 <main id="main"><div class="wrap" id="chat"></div></main>
 <div class="settings-shade" id="settingsShade" hidden><section class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="dialog-head"><h2 id="settingsTitle">Sozlamalar</h2><button class="btn" id="closeSettings" aria-label="Close">✕</button></div><div id="settingsContent"></div></section></div>
@@ -134,6 +178,9 @@ textarea::placeholder{color:var(--muted)}
   <div class="note" id="note"></div>
 </footer>
 
+
+<div id="loginScreen"><section class="login-card"><div class="login-brand"><div id="loginLogo"></div><div class="login-mark">TezkorAI</div><p>Shaxsiy AI suhbat maydoni</p></div><div class="login-tabs"><button type="button" id="loginTab" class="active">Kirish</button><button type="button" id="registerTab">Ro‘yxatdan o‘tish</button></div><form id="authForm"><label for="authUsername">Username</label><input id="authUsername" autocomplete="username" minlength="3" maxlength="24" required placeholder="username"><label for="authPassword">Parol</label><input id="authPassword" type="password" autocomplete="current-password" minlength="4" required placeholder="Parol"><div id="authError" role="alert"></div><button id="authSubmit" type="submit">Kirish</button></form><div id="authHint">Bu hozircha qurilmada ishlaydigan demo login. Haqiqiy himoyalangan akkauntlar uchun keyin server autentifikatsiyasi kerak bo‘ladi.</div></section></div>
+
 <script>
 /* ============ Logo ============ */
 const logo = (size, color) => `<svg width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="tbgrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${color || '#4DEBFF'}"/><stop offset="1" stop-color="#796BFF"/></linearGradient></defs><rect width="48" height="48" rx="15" fill="#10182B"/><rect x="1" y="1" width="46" height="46" rx="14" fill="none" stroke="url(#tbgrad)" stroke-width="1.5"/><path d="M24 7l4.2 11.8L40 23l-11.8 4.2L24 39l-4.2-11.8L8 23l11.8-4.2Z" fill="url(#tbgrad)"/><circle cx="24" cy="23" r="4" fill="#fff"/></svg>`;
@@ -141,8 +188,8 @@ const logo = (size, color) => `<svg width="${size}" height="${size}" viewBox="0 
 /* ============ i18n ============ */
 const STR = {
   uz: {
-    placeholder: "TB.AI ga yozing…", newBtn: "Yangi", tag: "The Best AI",
-    note: "TB.AI v0.0.5 — oflayn suhbat va hisoblash. Javoblar oldindan yozilgan bilimlarga tayanadi.",
+    placeholder: "TezkorAI ga yozing…", newBtn: "Yangi", tag: "The Best AI",
+    note: "TezkorAI v1.0 — suhbat va matematik hisoblash yordamchisi.",
     welcomeTitle: "Salom! Nima haqida gaplashamiz?",
     welcomeSub: "Savol bering, suhbatlashing yoki misol yechtiring — internetsiz.",
     suggestions: ["12*(3+4)-5", "2x+3=11", "x^2-5x+6=0", "Salom, kimsan?", "200 ning 15 foizi", "Latifa ayt"],
@@ -166,8 +213,8 @@ const STR = {
     ]
   },
   en: {
-    placeholder: "Message TB.AI…", newBtn: "New", tag: "The Best AI",
-    note: "TB.AI v0.0.4 — offline chat and calculations. Answers rely on built-in knowledge.",
+    placeholder: "Message TezkorAI…", newBtn: "New", tag: "The Best AI",
+    note: "TezkorAI v0.0.4 — offline chat and calculations. Answers rely on built-in knowledge.",
     welcomeTitle: "Hello! What shall we talk about?",
     welcomeSub: "Ask questions, chat, or solve math problems — offline.",
     suggestions: ["12*(3+4)-5", "2x+3=11", "x^2-5x+6=0", "Hi, who are you?", "15% of 200", "Tell me a joke"],
@@ -193,8 +240,8 @@ const STR = {
 };
 STR.ru = {
   ...STR.en,
-  placeholder:"Напишите TB.AI…", newBtn:"Новый чат", tag:"Локальный AI",
-  note:"TB.AI v0.0.3 — работает офлайн. Ответы могут быть неточными.",
+  placeholder:"Напишите TezkorAI…", newBtn:"Новый чат", tag:"Локальный AI",
+  note:"TezkorAI v0.0.3 — работает офлайн. Ответы могут быть неточными.",
   welcomeTitle:"Привет! О чём поговорим?", welcomeSub:"Общайтесь или решайте математические задачи — без интернета.",
   suggestions:["12*(3+4)-5","2x+3=11","x^2-5x+6=0","Привет, кто ты?","15% от 200","Расскажи анекдот"],
   answer:"Ответ:", badChar:c=>"Неизвестный символ: «"+c+"»",
@@ -401,16 +448,16 @@ let userName = '';
 const pick = a => a[Math.floor(Math.random() * a.length)];
 
 const R = {
-  greet:{ uz:["Salom{n}! Men TB.AI man. Misol yeching yoki shunchaki gaplashing.","Assalomu alaykum{n}! Bugun nima qilamiz?"],
-          en:["Hello{n}! I'm TB.AI. Give me a math problem or just chat.","Hi{n}! What shall we do today?"] },
+  greet:{ uz:["Salom{n}! Men TezkorAI man. Misol yeching yoki shunchaki gaplashing.","Assalomu alaykum{n}! Bugun nima qilamiz?"],
+          en:["Hello{n}! I'm TezkorAI. Give me a math problem or just chat.","Hi{n}! What shall we do today?"] },
   how:{ uz:["Zo'r, rahmat! O'zingiz-chi, qandaysiz?","Yaxshi — hisob-kitob qilib turibman. Sizda nima gap?"],
         en:["Doing great, thanks! How about you?","All good — crunching numbers. How are you?"] },
-  who:{ uz:["Men TB.AI — The Best AI. Internetsiz ishlaydigan, gaplasha va matematik misollarni yecha oladigan yordamchiman (v0.0.4)."],
-        en:["I'm TB.AI — The Best AI. An offline assistant that can chat and solve math problems (v0.0.4)."] },
-  creator:{ uz:["Meni sizning g'oyangiz asosida yaratishgan. Men hali yosh loyihaman — v0.0.4."],
-            en:["I was built from your idea, as a young project — v0.0.4."] },
-  tbmean:{ uz:["TB.AI — «The Best AI», ya'ni «Eng yaxshi AI» degani. Hali yo'lning boshida, lekin harakat qilaman!"],
-           en:["TB.AI stands for “The Best AI”. I'm still at the start of the road, but I'm doing my best!"] },
+  who:{ uz:["Men TezkorAI. Internetsiz ishlaydigan, gaplasha va matematik misollarni yecha oladigan yordamchiman (v0.0.4)."],
+        en:["I'm TezkorAI. An offline assistant that can chat and solve math problems (v0.0.4)."] },
+  creator:{ uz:["Menga ChatGPT, Claude va Wayb Coder kabi AI vositalari ilhom bergan; TezkorAI esa sizning g‘oyangiz asosida rivojlantirilmoqda."],
+            en:["ChatGPT, Claude, and Wayb Coder inspired TezkorAI. This version currently uses browser-based rules and prepared responses."] },
+  tbmean:{ uz:["TezkorAI — «The Best AI», ya'ni «Eng yaxshi AI» degani. Hali yo'lning boshida, lekin harakat qilaman!"],
+           en:["TezkorAI stands for “The Best AI”. I'm still at the start of the road, but I'm doing my best!"] },
   weather:{ uz:["Men internetsiz ishlayman, shuning uchun ob-havoni ayta olmayman. Derazaga qarab ko'ring."],
             en:["I work offline, so I can't check the weather. A quick look out the window will do!"] },
   thanks:{ uz:["Marhamat! Yana nimadir bormi?","Arzimaydi{n}!"], en:["You're welcome!","Anytime{n}!"] },
@@ -427,7 +474,7 @@ const R = {
          en:["The word “algebra” comes from al-Khwarizmi's book title (al-jabr), and “algorithm” comes from his name.",
              "111,111,111 × 111,111,111 = 12,345,678,987,654,321.",
              "The sum of 1 to 100 is 5050 — young Gauss reportedly found it in seconds."] },
-  version:{ uz:["TB.AI — versiya 0.0.4"], en:["TB.AI — version 0.0.4"] },
+  version:{ uz:["TezkorAI — versiya 0.0.4"], en:["TezkorAI — version 0.0.4"] },
   offline:{ uz:["Ha, men to'liq internetsiz ishlayman — hamma narsa qurilmangizning o'zida hisoblanadi."],
             en:["Yes, I work fully offline — everything is computed right on your device."] },
   age:{ uz:["Men juda yoshman — hozircha 0.0.2 versiyaman."], en:["I'm very young — only version 0.0.3 so far."] },
@@ -440,17 +487,17 @@ const R = {
 
 // Russian offline response pack for common conversation topics.
 const RU_REPLY = {
- greet:["Привет! Я TB.AI. Можем поговорить или решить пример.","Здравствуйте! Чем могу помочь?"],
+ greet:["Привет! Я TezkorAI. Можем поговорить или решить пример.","Здравствуйте! Чем могу помочь?"],
  how:["Спасибо, всё хорошо! А у вас?","Готов помочь — что обсудим?"],
- who:["Я TB.AI — офлайн-помощник. Умею вести простой диалог и решать некоторые математические задачи."],
- creator:["TB.AI создан на основе идеи пользователя. Это небольшой офлайн-проект."],
- tbmean:["TB.AI означает The Best AI — «лучший искусственный интеллект»."],
+ who:["Я TezkorAI — офлайн-помощник. Умею вести простой диалог и решать некоторые математические задачи."],
+ creator:["На создание TezkorAI вдохновили ChatGPT, Claude и Wayb Coder. Сейчас это небольшой проект с правилами и готовыми ответами."],
+ tbmean:["TezkorAI означает The Best AI — «лучший искусственный интеллект»."],
  weather:["Я работаю без интернета, поэтому не могу проверить текущую погоду."],
  thanks:["Пожалуйста! Чем ещё помочь?","Не за что!"],
  bye:["Пока! До встречи.","До свидания!"],
  joke:["Почему учебник математики грустил? В нём было слишком много задач.","Ноль сказал восьмёрке: «Какой красивый пояс!»"],
  fact:["Слово «алгебра» связано с названием труда учёного Аль-Хорезми.","Сумма чисел от 1 до 100 равна 5050."],
- version:["TB.AI — версия 0.0.4."], offline:["Да, базовые функции работают офлайн прямо на устройстве."],
+ version:["TezkorAI — версия 0.0.4."], offline:["Да, базовые функции работают офлайн прямо на устройстве."],
  age:["Я программа, поэтому человеческого возраста у меня нет."],
  compliment:["Спасибо! Я постараюсь быть полезнее."],
  langAbility:["Сейчас доступны узбекский, русский и английский интерфейсы."],
@@ -458,10 +505,10 @@ const RU_REPLY = {
 };
 const EXTRA_REPLY = {
   uz: {
-    greet:["Assalomu alaykum! 😊 Yaxshimisiz? Men TB.AI — siz bilan suhbatlashish, savollarga javob berish va misollarni yechishga yordam beradigan oflayn yordamchiman. Bugun nima haqida gaplashamiz?","Salom! Xush kelibsiz. Dars, matematika, fan, tarix yoki oddiy suhbat — istalgan mavzuda savol berib ko‘ring."],
+    greet:["Assalomu alaykum! 😊 Yaxshimisiz? Men TezkorAI — siz bilan suhbatlashish, savollarga javob berish va misollarni yechishga yordam beradigan oflayn yordamchiman. Bugun nima haqida gaplashamiz?","Salom! Xush kelibsiz. Dars, matematika, fan, tarix yoki oddiy suhbat — istalgan mavzuda savol berib ko‘ring."],
     how:["Rahmat, yaxshi! 😊 Sizning kayfiyatingiz qanday? Bugun maktab, qiziqishlaringiz yoki boshqa biror mavzu haqida gaplashishimiz mumkin.","Hammasi joyida — yordam berishga tayyorman. Sizda nima yangilik? Biror narsani bilmoqchi bo‘lsangiz, bemalol so‘rang."],
-    creator:["TB.AI — sizning g‘oyangiz asosida ishlab chiqilayotgan kichik loyiha. Ushbu HTML versiya 2026-yil 27-oktabrda 0.0.4 sifatida yangilandi. U JavaScript qoidalari va oldindan yozilgan javoblar yordamida ishlaydi; u katta neyron tarmoq modeli emas."],
-    who:["Men TB.AI — The Best AI. Men ushbu sahifadagi JavaScript dasturi orqali ishlaydigan oflayn yordamchiman. Oddiy suhbat qila olaman, ayrim umumiy savollarga javob beraman va matematik ifodalarni hisoblayman. Men haqiqiy inson emasman va ba'zi savollarda adashishim mumkin. Nima haqida gaplashamiz?"],
+    creator:["ChatGPT, Claude va Wayb Coder kabi AI vositalari TezkorAI g‘oyasiga ilhom bergan. Hozircha u brauzer ichidagi qoidalar va tayyor javoblar bilan ishlaydi."],
+    who:["Men TezkorAI. Men ushbu sahifadagi JavaScript dasturi orqali ishlaydigan oflayn yordamchiman. Oddiy suhbat qila olaman, ayrim umumiy savollarga javob beraman va matematik ifodalarni hisoblayman. Men haqiqiy inson emasman va ba'zi savollarda adashishim mumkin. Nima haqida gaplashamiz?"],
     meaningLife:["Bu savolga odamlar turlicha javob berishadi. Ko‘pchilik uchun hayotning mazmuni — yaqinlarga g‘amxo‘rlik qilish, o‘rganish, foydali ish qilish va o‘z oldiga maqsad qo‘yish. Har kim o‘z tajribasi va qadriyatlariga ko‘ra ma'no topadi. Sizningcha-chi?"],
     school:["Bilim odamga atrofdagi dunyoni tushunish, muammolarni hal qilish va mustaqil qaror qabul qilishda yordam beradi. O‘qishda hamma narsani birdan bilish shart emas: savol berish, mashq qilish va xatolardan o‘rganish muhim. Qaysi fan sizga qiziq?"],
     science:["Ilmiy savollarni sodda qilib tushuntirishga harakat qilaman. Masalan, Quyosh — Yerga eng yaqin yulduz; Yer uning atrofida aylanadi. Gravitatsiya esa jismlarning bir-birini tortish hodisasidir. Aniqroq qaysi mavzu sizni qiziqtiryapti?"],
@@ -469,18 +516,18 @@ const EXTRA_REPLY = {
     advice:["Keling, vaziyatni kichik qadamlarga ajratamiz. Avval aynan nima bezovta qilayotganini aniqlang, keyin bajarish mumkin bo‘lgan eng kichik qadamni tanlang. Agar zerikayotgan bo‘lsangiz, sayr, sevimli mashg‘ulot yoki qisqa tanaffus yordam berishi mumkin. Xohlasangiz, nima bo‘lganini ayting — birga o‘ylab ko‘ramiz."],
     help:["Men quyidagilarda yordam bera olaman:\n• Oddiy suhbat: salomlashish, hol-ahvol, minnatdorchilik va maslahat.\n• Umumiy bilim: maktab, ilm-fan, tarix va qiziqarli faktlar.\n• Matematika: arifmetika, foizlar, darajalar, ildizlar va ayrim chiziqli/kvadrat tenglamalar.\n• Til: o‘zbekcha, ruscha va inglizcha oddiy suhbat.\n• Sana/vaqt: qurilmangizdagi sana va vaqt.\n\nEslatma: men internetdan ma'lumot qidirmayman; barcha mavzularni bilmayman. Bilmasam, buni aytishim kerak."],
     offline:["Ha, asosiy funksiyalar internet talab qilmaydi: hisob-kitoblar va ichki javoblar telefoningizdagi brauzerda bajariladi. Lekin men internetdan yangi ma'lumot qidira olmayman va katta AI modelidek istalgan savolga javob bera olmayman."],
-    langAbility:["TB.AI interfeysida o‘zbek, rus va ingliz tillarini tanlashingiz mumkin. Sozlamalar uchun yuqoridagi uch nuqtani bosing. Suhbatni shu tillarda yozib ko‘ring; javob sifati til va savol turiga qarab farq qilishi mumkin."],
-    version:["TB.AI v0.0.4. Bu loyiha 2026-yil 27-oktabrda yangilandi. U HTML, CSS va JavaScript yordamida yaratilgan: HTML tuzilmani, CSS ko‘rinishni, JavaScript esa suhbat qoidalari va matematik hisoblarni boshqaradi."],
-    age:["Men inson emasman, shuning uchun haqiqiy yoshim yo‘q. TB.AI loyihasining ushbu 0.0.4 versiyasi 2026-yil 27-oktabrda tayyorlangan."],
-    tbmean:["TB.AI — “The Best AI” iborasining qisqartmasi, ya'ni “Eng yaxshi sun'iy intellekt” degan ma'noni anglatadi. Bu loyiha hozircha kichik, oflayn yordamchi bo‘lib, asta-sekin takomillashtirilmoqda."],
+    langAbility:["TezkorAI interfeysida o‘zbek, rus va ingliz tillarini tanlashingiz mumkin. Sozlamalar uchun yuqoridagi uch nuqtani bosing. Suhbatni shu tillarda yozib ko‘ring; javob sifati til va savol turiga qarab farq qilishi mumkin."],
+    version:["TezkorAI v0.0.4. Bu loyiha 2026-yil 27-oktabrda yangilandi. U HTML, CSS va JavaScript yordamida yaratilgan: HTML tuzilmani, CSS ko‘rinishni, JavaScript esa suhbat qoidalari va matematik hisoblarni boshqaradi."],
+    age:["Men inson emasman, shuning uchun haqiqiy yoshim yo‘q. TezkorAI loyihasining ushbu 0.0.4 versiyasi 2026-yil 27-oktabrda tayyorlangan."],
+    tbmean:["TezkorAI — “The Best AI” iborasining qisqartmasi, ya'ni “Eng yaxshi sun'iy intellekt” degan ma'noni anglatadi. Bu loyiha hozircha kichik, oflayn yordamchi bo‘lib, asta-sekin takomillashtirilmoqda."],
     joke:["Bir o‘quvchi kalkulyatorga dedi: “Senga ishonish mumkinmi?” Kalkulyator javob berdi: “Albatta, men hisob-kitobni yaxshi ko‘raman — lekin avval sonlarni to‘g‘ri kiriting!” 😄","O‘qituvchi: “Nega uy vazifang yo‘q?” O‘quvchi: “Daftarim uyda qoldi.” O‘qituvchi: “Sen ham uyda qolishing kerak edi!” 😄"],
     fact:["Qiziqarli fakt: sakkizoyoqning uchta yuragi bor. Yana bir fakt: asalari raqsga o‘xshash harakatlar orqali boshqa asalarilarga oziqa manbasi qayerdaligini bildirishi mumkin. Qaysi mavzuda fakt eshitishni xohlaysiz — tabiat, kosmos yoki tarix?"]
   },
   ru: {
-    greet:["Здравствуйте! 😊 Как у вас дела? Я TB.AI — офлайн-помощник для простого общения, ответов на некоторые вопросы и решения математических примеров. О чём поговорим сегодня?","Привет! Рад помочь. Можно спросить о школе, математике, науке, истории или просто поболтать."],
+    greet:["Здравствуйте! 😊 Как у вас дела? Я TezkorAI — офлайн-помощник для простого общения, ответов на некоторые вопросы и решения математических примеров. О чём поговорим сегодня?","Привет! Рад помочь. Можно спросить о школе, математике, науке, истории или просто поболтать."],
     how:["Спасибо, всё хорошо! 😊 А как ваше настроение? Можем поговорить об учёбе, интересах или любой другой теме.","Я готов помочь. Что нового у вас? Задавайте вопрос — постараюсь объяснить понятно."],
-    creator:["TB.AI — небольшой проект, созданный на основе идеи пользователя. Эта HTML-версия обновлена до 0.0.4 27 октября 2026 года. Она работает с помощью правил JavaScript и заранее подготовленных ответов; это не большая нейросетевая модель."],
-    who:["Я TB.AI — The Best AI. Я работаю как программа JavaScript в этой веб-странице. Я могу поддерживать простой диалог, отвечать на некоторые общие вопросы и считать математические выражения. Я не человек и могу ошибаться. О чём поговорим?"],
+    creator:["На создание TezkorAI вдохновили ChatGPT, Claude и Wayb Coder. Сейчас это небольшой проект с правилами и готовыми ответами."],
+    who:["Я TezkorAI. Я работаю как программа JavaScript в этой веб-странице. Я могу поддерживать простой диалог, отвечать на некоторые общие вопросы и считать математические выражения. Я не человек и могу ошибаться. О чём поговорим?"],
     meaningLife:["Люди отвечают на этот вопрос по-разному. Для многих смысл жизни связан с заботой о близких, обучением, полезными делами и личными целями. Каждый находит свой ответ через опыт и ценности. А что вы думаете об этом?"],
     school:["Знания помогают понимать мир, решать задачи и принимать самостоятельные решения. Необязательно знать всё сразу: важно задавать вопросы, практиковаться и учиться на ошибках. Какой школьный предмет вам интереснее всего?"],
     science:["Я постараюсь объяснять научные темы простыми словами. Например, Солнце — ближайшая к Земле звезда, а Земля вращается вокруг него. Гравитация — это взаимное притяжение тел. Какую тему хотите разобрать подробнее?"],
@@ -488,18 +535,18 @@ const EXTRA_REPLY = {
     advice:["Давайте разделим ситуацию на небольшие шаги. Сначала определите, что именно вас беспокоит, затем выберите один посильный шаг. Если скучно, может помочь прогулка, любимое занятие или небольшой перерыв. Если хотите, расскажите подробнее — попробуем разобраться вместе."],
     help:["Я могу помочь с:\n• Простым общением и приветствиями.\n• Общими сведениями о школе, науке и истории.\n• Математикой: арифметикой, процентами, степенями, корнями и некоторыми линейными/квадратными уравнениями.\n• Простым общением на узбекском, русском и английском.\n• Датой и временем устройства.\n\nВажно: я не ищу информацию в интернете и не знаю абсолютно всё. Если не знаю ответ, лучше сказать об этом честно."],
     offline:["Да, основные функции работают без интернета: вычисления и встроенные ответы выполняются в браузере телефона. Но я не могу искать новые сведения в сети и не отвечаю на любые вопросы так, как большая AI-модель."],
-    langAbility:["В интерфейсе TB.AI можно выбрать узбекский, русский и английский языки. Нажмите на три точки вверху, чтобы открыть настройки. Качество ответа зависит от языка и темы вопроса."],
-    version:["TB.AI v0.0.4. Проект обновлён 27 октября 2026 года. Он создан с помощью HTML, CSS и JavaScript: HTML задаёт структуру, CSS отвечает за оформление, а JavaScript управляет правилами диалога и математическими вычислениями."],
-    age:["Я программа, поэтому у меня нет человеческого возраста. Версия проекта TB.AI 0.0.4 подготовлена 27 октября 2026 года."],
-    tbmean:["TB.AI — сокращение от “The Best AI”, то есть «Лучший искусственный интеллект». Пока это небольшой офлайн-помощник, который постепенно развивается."],
+    langAbility:["В интерфейсе TezkorAI можно выбрать узбекский, русский и английский языки. Нажмите на три точки вверху, чтобы открыть настройки. Качество ответа зависит от языка и темы вопроса."],
+    version:["TezkorAI v0.0.4. Проект обновлён 27 октября 2026 года. Он создан с помощью HTML, CSS и JavaScript: HTML задаёт структуру, CSS отвечает за оформление, а JavaScript управляет правилами диалога и математическими вычислениями."],
+    age:["Я программа, поэтому у меня нет человеческого возраста. Версия проекта TezkorAI 0.0.4 подготовлена 27 октября 2026 года."],
+    tbmean:["TezkorAI — сокращение от “The Best AI”, то есть «Лучший искусственный интеллект». Пока это небольшой офлайн-помощник, который постепенно развивается."],
     joke:["Учитель спрашивает: «Почему ты не сделал домашнее задание?» Ученик: «Тетрадь осталась дома». Учитель: «Тебе тоже следовало остаться дома!» 😄","Калькулятор никогда не спорит — он просто показывает результат. Но иногда ему тоже нужен правильный ввод! 😄"],
     fact:["Интересный факт: у осьминога три сердца. А пчёлы могут движениями, похожими на танец, сообщать другим пчёлам, где находится источник пищи. Хотите факт о природе, космосе или истории?"]
   },
   en: {
-    greet:["Hello! 😊 How are you? I'm TB.AI, an offline helper for simple conversation, some general questions, and math problems. What would you like to talk about today?","Hi! Welcome. Ask me about school, math, science, history, or just start a casual chat."],
+    greet:["Hello! 😊 How are you? I'm TezkorAI, an offline helper for simple conversation, some general questions, and math problems. What would you like to talk about today?","Hi! Welcome. Ask me about school, math, science, history, or just start a casual chat."],
     how:["Thanks, I'm ready to help! 😊 How are you feeling today? We can talk about school, your interests, or another topic.","I'm here to help. What's new with you? Ask away and I'll try to explain clearly."],
-    creator:["TB.AI is a small project developed from the user's idea. This HTML version was updated to 0.0.5 on October 27, 2026. It uses JavaScript rules and prepared responses; it is not a large neural-network model."],
-    who:["I'm TB.AI — The Best AI. I run as a JavaScript program inside this webpage. I can have simple conversations, answer some general questions, and calculate math expressions. I'm not a person and I can make mistakes. What shall we talk about?"],
+    creator:["ChatGPT, Claude, and Wayb Coder inspired TezkorAI. This version currently uses browser-based rules and prepared responses."],
+    who:["I'm TezkorAI. I run as a JavaScript program inside this webpage. I can have simple conversations, answer some general questions, and calculate math expressions. I'm not a person and I can make mistakes. What shall we talk about?"],
     meaningLife:["People answer this in different ways. For many, meaning comes from caring for others, learning, doing useful things, and setting personal goals. Everyone develops their own view through experience and values. What do you think?"],
     school:["Knowledge helps us understand the world, solve problems, and make independent decisions. You don't need to know everything at once: asking questions, practising, and learning from mistakes all matter. Which subject do you enjoy most?"],
     science:["I'll try to explain science simply. For example, the Sun is the closest star to Earth, and Earth travels around it. Gravity is the attraction between objects. Which topic would you like to explore further?"],
@@ -507,10 +554,10 @@ const EXTRA_REPLY = {
     advice:["Let's break the situation into small steps. First, identify what's bothering you, then choose one manageable next step. If you're bored, a walk, a hobby, or a short break may help. If you'd like, tell me more and we can think it through together."],
     help:["I can help with:\n• Simple conversation and greetings.\n• General school, science, and history facts.\n• Math: arithmetic, percentages, powers, roots, and some linear/quadratic equations.\n• Simple conversation in Uzbek, Russian, and English.\n• Your device's date and time.\n\nNote: I don't search the internet and I don't know everything. If I don't know something, I should say so."],
     offline:["Yes, basic features work offline: calculations and built-in responses run in your phone's browser. But I can't search the web for new information or answer every question like a large AI model."],
-    langAbility:["TB.AI has Uzbek, Russian, and English interface options. Tap the three dots at the top to open settings. Answer quality may vary by language and topic."],
-    version:["TB.AI v0.0.4. This project was updated on October 27, 2026. It was built with HTML, CSS, and JavaScript: HTML defines structure, CSS handles appearance, and JavaScript runs the conversation rules and math calculations."],
-    age:["I'm software, so I don't have a human age. The TB.AI 0.0.4 project version was prepared on October 27, 2026."],
-    tbmean:["TB.AI stands for “The Best AI”. For now, it's a small offline assistant that is being improved step by step."],
+    langAbility:["TezkorAI has Uzbek, Russian, and English interface options. Tap the three dots at the top to open settings. Answer quality may vary by language and topic."],
+    version:["TezkorAI v0.0.4. This project was updated on October 27, 2026. It was built with HTML, CSS, and JavaScript: HTML defines structure, CSS handles appearance, and JavaScript runs the conversation rules and math calculations."],
+    age:["I'm software, so I don't have a human age. The TezkorAI 0.0.4 project version was prepared on October 27, 2026."],
+    tbmean:["TezkorAI stands for “The Best AI”. For now, it's a small offline assistant that is being improved step by step."],
     joke:["Why did the student bring a ladder to class? Because they wanted to go to high school! 😄","A calculator never argues; it just gives a result. But it still needs the right numbers entered! 😄"],
     fact:["Fun fact: an octopus has three hearts. Honeybees can also use dance-like movements to tell other bees where food is located. Would you like a fact about nature, space, or history?"]
   }
@@ -709,9 +756,9 @@ $('#degBtn').onclick = () => {
 };
 
 const menuLabels = {
- uz:{languages:'Tillar',questions:'Qanday savollarga javob beradi?',about:'AI haqida',title:'Sozlamalar',choose:'Tilni tanlang',questionTitle:'Savol namunalari va imkoniyatlar',aboutTitle:'TB.AI haqida',close:'Yopish'},
- ru:{languages:'Языки',questions:'На какие вопросы отвечает?',about:'Об ИИ',title:'Настройки',choose:'Выберите язык',questionTitle:'Примеры вопросов и возможности',aboutTitle:'О TB.AI',close:'Закрыть'},
- en:{languages:'Languages',questions:'What can it answer?',about:'About AI',title:'Settings',choose:'Choose a language',questionTitle:'Example questions and abilities',aboutTitle:'About TB.AI',close:'Close'}
+ uz:{languages:'Tillar',questions:'Qanday savollarga javob beradi?',about:'AI haqida',title:'Sozlamalar',choose:'Tilni tanlang',questionTitle:'Savol namunalari va imkoniyatlar',aboutTitle:'TezkorAI haqida',close:'Yopish'},
+ ru:{languages:'Языки',questions:'На какие вопросы отвечает?',about:'Об ИИ',title:'Настройки',choose:'Выберите язык',questionTitle:'Примеры вопросов и возможности',aboutTitle:'О TezkorAI',close:'Закрыть'},
+ en:{languages:'Languages',questions:'What can it answer?',about:'About AI',title:'Settings',choose:'Choose a language',questionTitle:'Example questions and abilities',aboutTitle:'About TezkorAI',close:'Close'}
 };
 function openSettingsPanel(panel){
   const labels=menuLabels[lang]||menuLabels.uz, content=$('#settingsContent');
@@ -722,7 +769,7 @@ function openSettingsPanel(panel){
     [['uz','🇺🇿 O‘zbekcha'],['ru','🇷🇺 Русский'],['en','🇬🇧 English']].forEach(([code,name])=>{const b=document.createElement('button');b.textContent=name;b.className=lang===code?'active':'';b.onclick=()=>{setLang(code);$('#settingsShade').hidden=true;$('#settingsMenu').hidden=true;};row.appendChild(b)});content.appendChild(row);
   } else if(panel==='questions'){
     const h=document.createElement('h3');h.textContent=labels.questionTitle;content.appendChild(h);
-    const data={uz:[['Salom','Assalomu alaykum! Qalaysiz?'],['Qalaysan?','Rahmat, yaxshi! Siz-chi?'],['Kimsan?','TB.AI — oflayn suhbat va hisoblash yordamchisi.'],['Nima qila olasan?','Oddiy suhbat, umumiy bilimlar va matematika.'],['200 ning 15 foizi','30'],['2x + 3 = 11','x = 4'],['Quyosh nima?','Yerga eng yaqin yulduz.'],['Kim yaratgan?','Foydalanuvchi g‘oyasi asosidagi HTML/CSS/JavaScript loyiha.'],['Qachon yangilangan?','v0.0.4 — 2026-yil 27-oktabr.']],ru:[['Привет','Здравствуйте! Как дела?'],['Как дела?','Спасибо, хорошо! А у вас?'],['Кто ты?','TB.AI — офлайн-помощник для простого общения и вычислений.'],['Что ты умеешь?','Простой диалог, общие знания и математика.'],['15% от 200','30'],['2x + 3 = 11','x = 4'],['Что такое Солнце?','Ближайшая к Земле звезда.'],['Кто создал?','HTML/CSS/JavaScript-проект на основе идеи пользователя.'],['Какая версия?','v0.0.4 — обновление от 27 октября 2026 года.']],en:[['Hello','Hello! How are you?'],['How are you?','Thanks, I’m ready to help!'],['Who are you?','TB.AI — an offline assistant for simple chat and calculations.'],['What can you do?','Simple conversation, general facts, and math.'],['15% of 200','30'],['2x + 3 = 11','x = 4'],['What is the Sun?','The closest star to Earth.'],['Who created you?','An HTML/CSS/JavaScript project based on the user’s idea.'],['What version?','v0.0.4 — updated October 27, 2026.']]};
+    const data={uz:[['Salom','Assalomu alaykum! Qalaysiz?'],['Qalaysan?','Rahmat, yaxshi! Siz-chi?'],['Kimsan?','TezkorAI — oflayn suhbat va hisoblash yordamchisi.'],['Nima qila olasan?','Oddiy suhbat, umumiy bilimlar va matematika.'],['200 ning 15 foizi','30'],['2x + 3 = 11','x = 4'],['Quyosh nima?','Yerga eng yaqin yulduz.'],['Kim yaratgan?','ChatGPT, Claude va Wayb Coder ilhom bergan.'],['Qachon yangilangan?','v0.0.4 — 2026-yil 27-oktabr.']],ru:[['Привет','Здравствуйте! Как дела?'],['Как дела?','Спасибо, хорошо! А у вас?'],['Кто ты?','TezkorAI — офлайн-помощник для простого общения и вычислений.'],['Что ты умеешь?','Простой диалог, общие знания и математика.'],['15% от 200','30'],['2x + 3 = 11','x = 4'],['Что такое Солнце?','Ближайшая к Земле звезда.'],['Кто создал?','HTML/CSS/JavaScript-проект на основе идеи пользователя.'],['Какая версия?','v0.0.4 — обновление от 27 октября 2026 года.']],en:[['Hello','Hello! How are you?'],['How are you?','Thanks, I’m ready to help!'],['Who are you?','TezkorAI — an offline assistant for simple chat and calculations.'],['What can you do?','Simple conversation, general facts, and math.'],['15% of 200','30'],['2x + 3 = 11','x = 4'],['What is the Sun?','The closest star to Earth.'],['Who created you?','ChatGPT, Claude, and Wayb Coder inspired TezkorAI.'],['What version?','v0.0.4 — updated October 27, 2026.']]};
     const list=document.createElement('div');list.className='qa-list';data[lang].forEach(([q,a])=>{const r=document.createElement('div');r.className='qa-row';const b=document.createElement('b');b.textContent=q;const sp=document.createElement('span');sp.textContent=a;r.append(b,sp);r.onclick=()=>{ $('#settingsShade').hidden=true; submit(q); };r.style.cursor='pointer';list.appendChild(r)});content.appendChild(list);
     const note=document.createElement('p');note.style.marginTop='12px';note.textContent=lang==='uz'?'Namunani bosib, uni suhbatda sinab ko‘ring. Bu ro‘yxat barcha mumkin bo‘lgan savollarni anglatmaydi.':lang==='ru'?'Нажмите на пример, чтобы проверить его в чате. Список не означает, что помощник знает всё.':'Tap an example to try it in chat. This list does not mean the assistant knows everything.';content.appendChild(note);
   } else {
@@ -741,6 +788,42 @@ $('#hLogo').innerHTML = logo(32);
 $('#fav').href = 'data:image/svg+xml,' + encodeURIComponent(logo(64, '#C96442'));
 loadAll(); applyLang(); render();
 </script>
+
+<script>
+/* TezkorAI local demo accounts + 150 conversation manager */
+(function(){
+ const $q=s=>document.querySelector(s);
+ const LOGIN_KEY='tezkorai_accounts_v1', SESSION_KEY='tezkorai_session_v1';
+ const convKey=()=> 'tezkorai_conversations_'+(localStorage.getItem(SESSION_KEY)||'');
+ let authMode='login', currentId=null, conversations=[];
+ const screen=$q('#loginScreen'), form=$q('#authForm'), userField=$q('#authUsername'), passField=$q('#authPassword');
+ $q('#loginLogo').innerHTML=logo(58);
+ function accounts(){try{return JSON.parse(localStorage.getItem(LOGIN_KEY)||'{}')}catch(e){return {}}}
+ async function hash(v){const bytes=new TextEncoder().encode(v);if(window.crypto&&crypto.subtle){const digest=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('')}return btoa(unescape(encodeURIComponent(v)))}
+ function setMode(m){authMode=m;$q('#loginTab').classList.toggle('active',m==='login');$q('#registerTab').classList.toggle('active',m==='register');$q('#authSubmit').textContent=m==='login'?'Kirish':'Ro‘yxatdan o‘tish';passField.autocomplete=m==='login'?'current-password':'new-password';$q('#authError').textContent=''}
+ $q('#loginTab').onclick=()=>setMode('login');$q('#registerTab').onclick=()=>setMode('register');
+ function setAuthError(t){$q('#authError').textContent=t}
+ function loadConversations(){try{conversations=JSON.parse(localStorage.getItem(convKey())||'[]')}catch(e){conversations=[]}if(!Array.isArray(conversations))conversations=[];conversations=conversations.slice(0,150);}
+ function persistConversations(){try{localStorage.setItem(convKey(),JSON.stringify(conversations.slice(0,150)))}catch(e){}}
+ function titleFor(items){const m=items.find(x=>x.role==='user');return m?(m.text||'Yangi suhbat').slice(0,34):'Yangi suhbat'}
+ function ensureCurrent(){if(!currentId){currentId='c_'+Date.now();conversations.unshift({id:currentId,title:'Yangi suhbat',messages:[],updated:Date.now()})}}
+ function saveCurrent(){if(!localStorage.getItem(SESSION_KEY))return;ensureCurrent();const c=conversations.find(x=>x.id===currentId);if(c){c.messages=JSON.parse(JSON.stringify(history||[]));c.title=titleFor(c.messages);c.updated=Date.now();conversations.sort((a,b)=>b.updated-a.updated);conversations=conversations.slice(0,150);persistConversations();renderConversationList()}}
+ function renderConversationList(){const list=$q('#conversationList');list.innerHTML='';conversations.forEach(c=>{const b=document.createElement('button');b.className='conv-item'+(c.id===currentId?' active':'');b.textContent='◌  '+(c.title||'Yangi suhbat');b.title=c.title||'Yangi suhbat';b.onclick=()=>openConversation(c.id);list.appendChild(b)});if(!conversations.length){const p=document.createElement('div');p.style.cssText='font-size:12px;color:#8196ab;padding:8px';p.textContent='Hozircha suhbat yo‘q';list.appendChild(p)}}
+ function openConversation(id){saveCurrent();const c=conversations.find(x=>x.id===id);if(!c)return;currentId=id;history=JSON.parse(JSON.stringify(c.messages||[]));render();saveCurrent();closeSide()}
+ function newConversation(){saveCurrent();currentId='c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);history=[];ensureCurrent();render();saveCurrent();inp.focus();closeSide()}
+ function closeSide(){$q('#sidePanel').classList.remove('open');$q('#sideShade').classList.remove('show')}
+ function openApp(username){localStorage.setItem(SESSION_KEY,username);screen.hidden=true;$q('#profileBtn').textContent=(username[0]||'?').toUpperCase();$q('#accountName').textContent=username;$q('#accountInfo').textContent='Username: '+username;loadConversations();if(conversations.length){const c=conversations.sort((a,b)=>b.updated-a.updated)[0];currentId=c.id;history=JSON.parse(JSON.stringify(c.messages||[]));render()}else{currentId=null;history=[];ensureCurrent();render();saveCurrent()}renderConversationList();applyLang()}
+ form.addEventListener('submit',async e=>{e.preventDefault();const username=userField.value.trim().toLowerCase();const password=passField.value;if(!/^[a-z0-9_.-]{3,24}$/.test(username)){setAuthError('Username 3–24 belgi bo‘lsin: lotin harflari, raqam, _ . -');return}if(password.length<4){setAuthError('Parol kamida 4 ta belgidan iborat bo‘lsin.');return}const all=accounts();const digest=await hash(password);if(authMode==='register'){if(all[username]){setAuthError('Bu username band. Boshqasini tanlang.');return}all[username]={passwordHash:digest,created:Date.now()};try{localStorage.setItem(LOGIN_KEY,JSON.stringify(all))}catch(err){setAuthError('Qurilmada saqlash imkoni bo‘lmadi.');return}passField.value='';openApp(username)}else{if(!all[username]||all[username].passwordHash!==digest){setAuthError('Username yoki parol noto‘g‘ri. Agar yangi bo‘lsangiz, ro‘yxatdan o‘ting.');return}passField.value='';openApp(username)}});
+ $q('#sideToggle').onclick=()=>{$q('#sidePanel').classList.toggle('open');$q('#sideShade').classList.toggle('show')};$q('#sideShade').onclick=closeSide;$q('#sideNew').onclick=newConversation;$q('#newBtn').onclick=newConversation;
+ $q('#profileBtn').onclick=()=>{$q('#accountMenu').hidden=!$q('#accountMenu').hidden};document.addEventListener('click',e=>{if(!e.target.closest('#accountMenu')&&!e.target.closest('#profileBtn'))$q('#accountMenu').hidden=true});
+ function returnLogin(){saveCurrent();localStorage.removeItem(SESSION_KEY);$q('#accountMenu').hidden=true;screen.hidden=false;setMode('login');userField.value='';passField.value='';setAuthError('');}
+ $q('#backToLogin').onclick=returnLogin;$q('#logoutBtn').onclick=returnLogin;
+ const oldSave=save;save=function(){oldSave();saveCurrent()};
+ const oldSubmit=submit;submit=function(text){oldSubmit(text);};
+ // If there is no session, always show the login page first.
+ const active=localStorage.getItem(SESSION_KEY), all=accounts();if(active&&all[active])openApp(active);else{localStorage.removeItem(SESSION_KEY);screen.hidden=false;setMode('login');renderConversationList()}
+})();
+</script>
+
 </body>
 </html>
-
